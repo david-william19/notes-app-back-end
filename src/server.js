@@ -1,11 +1,12 @@
 /* eslint-disable import/no-extraneous-dependencies */
 const Hapi = require('@hapi/hapi');
 const routes = require('./routes');
+require('dotenv').config();
 
 async function init() {
     // config server
     const server = Hapi.server({
-        port: 8080,
+        port: process.env.PORT,
         host: process.env.NODE_ENV !== 'production' ? 'localhost' : '0.0.0.0',
         routes: {
             cors: {
